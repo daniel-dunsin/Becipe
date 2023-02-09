@@ -1,19 +1,25 @@
 import React, { useState } from "react";
 import { BiChevronDown, BiChevronUp, BiSearch } from "react-icons/bi";
+import { useGlobalContext } from "../../context";
 import { categories } from "../../static/categories";
 
 const FilterSection = () => {
+  const {
+    category,
+    selectCategory,
+    searchParam,
+    updateSearch,
+    searchFoodItems,
+    clearSearch,
+  } = useGlobalContext();
   const [categoryFilterOpen, setCategoryFilterOpen] = useState<boolean>(false);
-  const [category, setCategory] = useState<"all" | string>("all");
   const toggleCategoryFilter = () => {
     setCategoryFilterOpen((prev) => !prev);
   };
   const closeCategoryFilter = () => {
     setCategoryFilterOpen(false);
   };
-  const selectCategory = (category: string) => {
-    setCategory(category);
-  };
+
   return (
     <section className="mt-14 w-[90%] max-w-[850px] mx-auto rounded-md shadow-md flex items-center gap-4 md:flex-row flex-col bg-white px-6 py-4">
       <p className="text-gray-600 text-[14px] font-bold cursor-pointer">
@@ -46,6 +52,7 @@ const FilterSection = () => {
                           className="px-4 py-2 bg-gray-100 text-gray-600"
                           onClick={() => {
                             closeCategoryFilter();
+                            clearSearch();
                             selectCategory(category);
                           }}
                         >
@@ -63,11 +70,13 @@ const FilterSection = () => {
           )}
         </article>
       </div>
-      <form className="flex flex-1 gap-2">
+      <form className="flex flex-1 gap-2" onSubmit={searchFoodItems}>
         <input
           className={styles.filterContainer + "flex-1 w-full"}
           type="text"
           placeholder="Search food item"
+          value={searchParam}
+          onChange={updateSearch}
         />
         <button
           type="submit"

@@ -1,7 +1,16 @@
+import { ChangeEvent } from "react";
+
 export type IContext = {
     navbarOpen: boolean;
     openNavbar: ()=> void;
     closeNavbar: ()=> void;
+    category: string;
+    selectCategory: (category:string)=> void;
+    mainFoodItems: singleFood[];
+    searchParam: string;
+    updateSearch :(evt: ChangeEvent<HTMLInputElement>)=> void;
+    searchFoodItems : (evt: ChangeEvent<HTMLFormElement>)=> void;
+    clearSearch: ()=> void;
 }
 
 export type singleFood = {

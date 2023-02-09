@@ -13,5 +13,5 @@ export const categories:string[] = [
     "Side", 
     "Starter", 
     "Vegan", 
-    "Vegetrian"
+    "Vegetarian"
 ]
