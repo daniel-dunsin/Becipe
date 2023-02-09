@@ -6,11 +6,11 @@ import Header from "../components/Home/Header";
 
 const Home = () => {
   return (
-    <div className="flex-1 p-8 min-h-screen md:ml-[300px]">
+    <main className="flex-1 p-8 min-h-screen md:ml-[300px]">
       <Header />
       <FilterSection />
       <Foods />
-    </div>
+    </main>
   );
 };
 
