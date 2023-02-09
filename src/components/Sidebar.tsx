@@ -7,7 +7,7 @@ const Sidebar = () => {
   const { navbarOpen, openNavbar, closeNavbar } = useGlobalContext();
   return (
     <aside
-      className={`flex-[0.3] w-[100vw] md:max-w-[300px] md:static fixed top-0 left-0 min-h-[100vh] z-[6] bg-white transition duration-400 ${
+      className={`flex-[0.3] w-[100vw] md:max-w-[300px] fixed top-0 left-0 h-[100vh] z-[6] bg-white transition duration-400 ${
         navbarOpen ? "translate-y-0" : "-translate-y-[100%] md:translate-y-0"
       }`}
     >

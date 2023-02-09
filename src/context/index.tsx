@@ -6,7 +6,7 @@ import {
   useContext,
   useState,
 } from "react";
-import { IContext } from "../types";
+import { IContext, singleFood } from "../types";
 
 type AppProviderProps = {
   children?: ReactElement;
@@ -17,6 +17,9 @@ export const AppProvider: FC<AppProviderProps> = ({
   children,
 }): ReactElement => {
   const [navbarOpen, setNavbarOpen] = useState<boolean>(false);
+  const [filteredItem, setFilteredItem] = useState<singleFood[]>([]);
+  const [mainFoodItems, setMainFoodItems] = useState<singleFood[]>([]);
+
   const closeNavbar = (): void => {
     setNavbarOpen(false);
   };

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BiChevronDown, BiSearch } from "react-icons/bi";
+import { BiChevronDown, BiChevronUp, BiSearch } from "react-icons/bi";
 import { categories } from "../../static/categories";
 
 const FilterSection = () => {
@@ -15,20 +15,22 @@ const FilterSection = () => {
     setCategory(category);
   };
   return (
-    <section className="mt-14 w-[90%] max-w-[900px] mx-auto rounded-md shadow-md flex items-center gap-4 md:flex-row flex-col bg-white px-6 py-4">
-      <p className="text-gray-600 text-[14px] font-light">FILTER</p>
-      <div className="relative flex-1">
+    <section className="mt-14 w-[90%] max-w-[850px] mx-auto rounded-md shadow-md flex items-center gap-4 md:flex-row flex-col bg-white px-6 py-4">
+      <p className="text-gray-600 text-[14px] font-bold cursor-pointer">
+        FILTER
+      </p>
+      <div className="relative flex-1 w-full">
         <article
           className={
             styles.filterContainer +
-            "relative cursor-pointer flex items-center justify-between gap-6"
+            "relative cursor-pointer flex items-center justify-between gap-6 w-full"
           }
           onClick={toggleCategoryFilter}
         >
           {category.toLowerCase() === "all" ? "All Categories" : category}
 
-          <span className="text-[18px] text-yellow-600">
-            <BiChevronDown />
+          <span className="text-[18px]">
+            {categoryFilterOpen ? <BiChevronUp /> : <BiChevronDown />}
           </span>
           {categoryFilterOpen && (
             <main className="absolute z-[6] top-[105%] left-0 w-full bg-gray-100 flex flex-col rounded-md overflow-x-hidden overlow-y-scroll max-h-[200px] shadow-md">
